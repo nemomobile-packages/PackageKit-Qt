@@ -1,5 +1,5 @@
 Summary:   Qt support library for PackageKit
-Name:      PackageKit-Qt
+Name:      PackageKit-Qt5
 Version:   0.8.8
 Release:   1
 License:   GPLv2+
@@ -8,9 +8,9 @@ URL:       http://www.packagekit.org
 Source0:   http://www.packagekit.org/releases/%{name}-%{version}.tar.xz
 
 Requires: PackageKit >= 0.8.9
-BuildRequires: pkgconfig(QtCore)
-BuildRequires: pkgconfig(QtDBus)
-BuildRequires: pkgconfig(QtSql)
+BuildRequires: pkgconfig(Qt5Core)
+BuildRequires: pkgconfig(Qt5DBus)
+BuildRequires: pkgconfig(Qt5Sql)
 BuildRequires: cmake >= 2.8.7
 BuildRequires: PackageKit >= 0.8.9
 
@@ -28,11 +28,11 @@ Requires: pkgconfig
 Development headers and libraries for PackageKit-Qt.
 
 %prep
-%setup -q -n %{name}-%{version}/%{name}
+%setup -q -n %{name}-%{version}/PackageKit-Qt
 
 %build
 rm -f CMakeCache.txt && mkdir -p build && cd build
-cmake ..
+cmake -DUSE_QT5=ON ..
 make %{?jobs:-j%jobs}
 
 %install
@@ -47,14 +47,14 @@ make DESTDIR=%{buildroot} install
 %files
 %defattr(-,root,root,-)
 %doc AUTHORS COPYING NEWS
-%{_libdir}/*packagekit-qt2.so.*
+%{_libdir}/*packagekit-qt5.so.*
 
 %files devel
 %defattr(-,root,root,-)
 %doc AUTHORS COPYING NEWS
 %{_libdir}/libpackagekit-qt*.so
-%{_libdir}/pkgconfig/packagekit-qt2.pc
-%dir %{_includedir}/PackageKit/packagekit-qt2
-%{_includedir}/PackageKit/packagekit-qt2/*
-%dir %{_libdir}/cmake/packagekit-qt2
-%{_libdir}/cmake/packagekit-qt2/*.cmake
+%{_libdir}/pkgconfig/packagekit-qt5.pc
+%dir %{_includedir}/PackageKit/packagekit-qt5
+%{_includedir}/PackageKit/packagekit-qt5/*
+%dir %{_libdir}/cmake/packagekit-qt5
+%{_libdir}/cmake/packagekit-qt5/*.cmake
