@@ -1,6 +1,6 @@
 Summary:   Qt support library for PackageKit
 Name:      PackageKit-Qt
-Version:   0.8.8+nemo1
+Version:   0.8.8+nemo2
 Release:   1
 License:   GPLv2+
 Group:     System/Libraries
