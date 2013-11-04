@@ -1,7 +1,7 @@
 Summary:   Qt support library for PackageKit
 Name:      PackageKit-Qt5
-Version:   0.8.8.skytree4
-Release:   1%{?dist}
+Version:   0.8.8
+Release:   1
 License:   GPLv2+
 Group:     System/Libraries
 URL:       http://www.packagekit.org
