@@ -1204,6 +1204,11 @@ public:
      */
     static QStringList packageDesktopFiles(const QString &packageName);
 
+    /**
+     * Returns the package name by the \p desktopFile
+     */
+    static QString packageNameByDesktopFile(const QString &desktopFile);
+
 Q_SIGNALS:
     /**
      * The transaction has changed one of it's properties
