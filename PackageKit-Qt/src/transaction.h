@@ -1177,27 +1177,32 @@ public:
     /**
      * Returns the package name from the \p packageID
      */
-    static QString packageName(const QString &packageID);
+    Q_INVOKABLE static QString packageName(const QString &packageID);
 
     /**
      * Returns the package version from the \p packageID
      */
-    static QString packageVersion(const QString &packageID);
+    Q_INVOKABLE static QString packageVersion(const QString &packageID);
 
     /**
      * Returns the package arch from the \p packageID
      */
-    static QString packageArch(const QString &packageID);
+    Q_INVOKABLE static QString packageArch(const QString &packageID);
 
     /**
      * Returns the package data from the \p packageID
      */
-    static QString packageData(const QString &packageID);
+    Q_INVOKABLE static QString packageData(const QString &packageID);
 
     /**
      * Returns the package icon from the \p packageID
      */
-    static QString packageIcon(const QString &packageID);
+    Q_INVOKABLE static QString packageIcon(const QString &packageID);
+
+    /**
+     * Returns the desktop files stored in the \p package.
+     */
+    static QStringList packageDesktopFiles(const QString &packageName);
 
     /**
      * Returns the desktop files stored in the \p package.

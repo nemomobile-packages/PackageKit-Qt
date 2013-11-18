@@ -5,7 +5,7 @@ Release:   1
 License:   GPLv2+
 Group:     System/Libraries
 URL:       http://www.packagekit.org
-Source0:   http://www.packagekit.org/releases/%{name}-%{version}.tar.xz
+Source0:   %{name}-%{version}.tar.xz
 
 Requires: PackageKit >= 0.8.9
 BuildRequires: pkgconfig(Qt5Core)
