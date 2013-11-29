@@ -373,11 +373,13 @@ QString Transaction::packageNameByDesktopFile(const QString &desktopFile)
     q.prepare("SELECT package FROM cache WHERE filename = :desktopFile");
     q.bindValue(":desktopFile", desktopFile);
     if (q.exec()) {
-        if (q.size() == 1) {
-            q.next();
-            return q.value(0).toString();
-        } else if (q.size() > 1) {
-            qDebug() << "Multiple packages found for query " << q.executedQuery();
+        if (q.first()) {
+            QString pkgName = q.value(0).toString();
+            if (q.next()) {
+                qDebug() << "Multiple packages found for query " << q.executedQuery();
+            } else {
+                return pkgName;
+            }
         } else {
             qDebug() << "No packages found for query " << q.executedQuery();
         }
