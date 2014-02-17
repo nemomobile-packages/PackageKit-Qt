@@ -361,6 +361,35 @@ QStringList Transaction::packageDesktopFiles(const QString &packageName)
     return desktopFiles;
 }
 
+QString Transaction::packageNameByDesktopFile(const QString &desktopFile)
+{
+    QSqlDatabase db = QSqlDatabase::database(PK_DESKTOP_DEFAULT_DATABASE);
+    if (!db.isOpen()) {
+        qDebug() << "Desktop files database is not open";
+        return QString();
+    }
+
+    QSqlQuery q(db);
+    q.prepare("SELECT package FROM cache WHERE filename = :desktopFile");
+    q.bindValue(":desktopFile", desktopFile);
+    if (q.exec()) {
+        if (q.first()) {
+            QString pkgName = q.value(0).toString();
+            if (q.next()) {
+                qDebug() << "Multiple packages found for query " << q.executedQuery();
+            } else {
+                return pkgName;
+            }
+        } else {
+            qDebug() << "No packages found for query " << q.executedQuery();
+        }
+    } else {
+        qDebug() << "Error while running query " << q.executedQuery();
+    }
+
+    return QString();
+}
+
 QString Transaction::lastPackage() const
 {
     Q_D(const Transaction);
