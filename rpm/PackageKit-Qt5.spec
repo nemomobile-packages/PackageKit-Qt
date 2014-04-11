@@ -1,6 +1,6 @@
 Summary:   Qt support library for PackageKit
 Name:      PackageKit-Qt5
-Version:   0.8.8+nemo4
+Version:   0.8.8+nemo5
 Release:   1
 License:   GPLv2+
 Group:     System/Libraries
