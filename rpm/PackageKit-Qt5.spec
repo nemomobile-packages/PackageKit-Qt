@@ -23,6 +23,14 @@ License: LGPLv2+
 Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 Requires: pkgconfig
+# These requirements are because of the line:
+#     Requires: Qt5Core, Qt5DBus, Qt5Sql, Qt5Xml
+# in the pkg-config file from:
+#     PackageKit-Qt/src/packagekit-qt5.pc.in
+Requires: pkgconfig(Qt5Core)
+Requires: pkgconfig(Qt5DBus)
+Requires: pkgconfig(Qt5Sql)
+Requires: pkgconfig(Qt5Xml)
 
 %description devel
 Development headers and libraries for PackageKit-Qt.
